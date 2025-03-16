@@ -3,6 +3,8 @@ import { defineUserConfig } from 'vuepress'
 import { plumeTheme } from 'vuepress-theme-plume'
 
 export default defineUserConfig({
+  // 指定打包目录
+  dest: 'public',
   base: '/',
   lang: 'zh-CN',
   locales: {

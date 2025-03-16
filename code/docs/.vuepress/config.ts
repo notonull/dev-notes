@@ -4,7 +4,7 @@ import { plumeTheme } from 'vuepress-theme-plume'
 
 export default defineUserConfig({
   // 指定打包目录
-  dest: 'public',
+  dest: '../docs',
   base: '/blog',
   lang: 'zh-CN',
   locales: {

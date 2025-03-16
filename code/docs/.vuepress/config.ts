@@ -5,8 +5,9 @@ import { plumeTheme } from 'vuepress-theme-plume'
 export default defineUserConfig({
   // 指定打包目录
   dest: '../docs',
-  base: '/blog/',
+  base: '/',
   lang: 'zh-CN',
+  toc: true,
   locales: {
     '/': {
       title: 'aGeng \'s Blog',

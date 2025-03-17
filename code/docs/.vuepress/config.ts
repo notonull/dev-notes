@@ -5,7 +5,7 @@ import { plumeTheme } from 'vuepress-theme-plume'
 export default defineUserConfig({
   // 指定打包目录
   dest: '../docs',
-  base: '/blog',
+  base: '/logic-hub',
   lang: 'zh-CN',
   locales: {
     '/': {
@@ -53,7 +53,7 @@ export default defineUserConfig({
     // },
 
     /* 博客文章页面链接前缀 */
-    article: '/article/',
+    article: '/blog/',
 
     /**
      * 编译缓存，加快编译速度

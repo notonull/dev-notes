@@ -1,8 +1,12 @@
 ---
-title: 【Linux】【Docker】【MySQL】MySQL服务安装
-createTime: 2025/03/18 10:24:04
-permalink: /blog/blf3x2gx/
+title:【Linux】【Docker】【MySQL】MySQL服务安装
+tags:
+  - linux
+  - docker
+  - mysql
+createTime: 2025/03/18 09:00:00
 ---
+
 #### 【Linux】【Docker】【MySQL】MySQL服务安装
 
 ##### 1.新建宿主机挂载目录

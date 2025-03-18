@@ -1,10 +1,8 @@
 ---
 title: 【Linux】【Docker】【MySQL】MySQL服务安装
-description: Linux 基于Docker安装MySQL服务
-createTime: 2024/09/08 22:53:34
-permalink: /article/8ek5mxoa/
+createTime: 2025/03/18 10:24:04
+permalink: /blog/blf3x2gx/
 ---
-
 #### 【Linux】【Docker】【MySQL】MySQL服务安装
 
 ##### 1.新建宿主机挂载目录

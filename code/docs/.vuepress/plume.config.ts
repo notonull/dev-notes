@@ -29,8 +29,8 @@ export default defineThemeConfig({
 
   /* 站点页脚 */
   footer: {
-    message: 'Power by <a target="_blank" href="https://v2.vuepress.vuejs.org/">VuePress</a> & <a target="_blank" href="https://theme-plume.vuejs.press">vuepress-theme-plume</a>',
-    copyright: '',
+    message: '探索、思考、创造',
+    copyright: '© 2025 aGeng. All Rights Reserved.',
   },
 
   /* 过渡动画 @see https://theme-plume.vuejs.press/config/basic/#transition */

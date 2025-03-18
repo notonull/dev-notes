@@ -1,5 +1,7 @@
 ---
 title: 【Linux】【Docker】【MySQL】MySQL服务安装
+copyright: CC-BY-4.0
+toc: true
 tags:
   - linux
   - docker

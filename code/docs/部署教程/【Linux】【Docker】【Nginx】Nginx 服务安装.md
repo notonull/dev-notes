@@ -1,5 +1,7 @@
 ---
 title: 【Linux】【Docker】【Nginx】Nginx服务安装
+copyright: CC-BY-4.0
+toc: true
 tags:
   - linux
   - docker

@@ -1,5 +1,6 @@
 ---
 title: 【Linux】【Docker】Ollama服务安装
+copyright: CC-BY-4.0
 toc: true
 tags:
   - linux

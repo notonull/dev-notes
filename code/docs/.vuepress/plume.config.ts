@@ -8,7 +8,7 @@ import { enNotes, zhNotes } from './notes'
 export default defineThemeConfig({
   logo: 'https://theme-plume.vuejs.press/plume.png',
 
-  appearance: true,  // 配置 深色模式
+  appearance: false,  // 配置 深色模式
 
   social: [
     { icon: 'github', link: 'https://github.com/notonull' },
@@ -28,10 +28,10 @@ export default defineThemeConfig({
   // createTime: true, // 是否显示文章创建时间
 
   /* 站点页脚 */
-  // footer: {
-  //   message: 'Power by <a target="_blank" href="https://v2.vuepress.vuejs.org/">VuePress</a> & <a target="_blank" href="https://theme-plume.vuejs.press">vuepress-theme-plume</a>',
-  //   copyright: '',
-  // },
+  footer: {
+    message: 'Power by <a target="_blank" href="https://v2.vuepress.vuejs.org/">VuePress</a> & <a target="_blank" href="https://theme-plume.vuejs.press">vuepress-theme-plume</a>',
+    copyright: '',
+  },
 
   /* 过渡动画 @see https://theme-plume.vuejs.press/config/basic/#transition */
   // transition: {

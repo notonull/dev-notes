@@ -1,5 +1,7 @@
 ---
 title: 【Linux】【Ubuntu】NVIDIA 容器工具包安装
+copyright: CC-BY-4.0
+toc: true
 tags:
   - linux
   - ubunto

@@ -9,41 +9,39 @@ createTime: 2025/03/18 09:00:00
 permalink: /blog/mpqs2g9m/
 ---
 
-#### 【Linux】【Ubuntu 】【Docker】Docker服务安装
-
-##### 1.更新软件源
+## 1.更新软件源
 
 ```bash
 sudo apt update
 sudo apt upgrade
 ```
 
-##### 2.安装依赖
+## 2.安装依赖
 
 ```bash
 sudo apt install apt-transport-https ca-certificates curl gnupg2 software-properties-common
 ```
 
-##### 3.使用阿里云Docker CE仓库GPG密钥
+## 3.使用阿里云Docker CE仓库GPG密钥
 
 ```bash
 curl -fsSL https://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo apt-key add -
 ```
 
-##### 4.添加阿里云的仓库
+## 4.添加阿里云的仓库
 
 ```bash
 sudo add-apt-repository "deb [arch=amd64] https://mirrors.aliyun.com/docker-ce/linux/ubuntu $(lsb_release -cs) stable"
 ```
 
-##### 5.再次更新软件源
+## 5.再次更新软件源
 
 ```bash
 sudo apt update
 sudo apt upgrade
 ```
 
-##### 6.安装dorcker
+## 6.安装dorcker
 
 ```bash
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
@@ -57,7 +55,7 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin 
 | docker-buildx-plugin  | 增强的构建工具插件                           |
 | docker-compose-plugin | 管理和运行多容器应用插件                     |
 
-##### 7.DockerHub
+## 7.DockerHub
 
 **国内DockerHub因不知名原因无法访问，各大互联网服务相继关停，目前只能尝试不断更新镜像站源**
 
@@ -67,7 +65,7 @@ https://zhuanlan.zhihu.com/p/24461370776
 https://cloud.tencent.com/developer/article/2485043
 ```
 
-###### 7.1.配置镜像源列表
+### 7.1.配置镜像源列表
 
 ```bash
 sudo vim /etc/docker/daemon.json <<EOF
@@ -80,14 +78,14 @@ sudo vim /etc/docker/daemon.json <<EOF
 EOF
 ```
 
-###### 7.2.docker重启
+### 7.2.docker重启
 
 ```bash
 systemctl daemon-reload
 systemctl restart docker
 ```
 
-##### 常用命令
+## 常用命令
 
 ```bash
 docker ps

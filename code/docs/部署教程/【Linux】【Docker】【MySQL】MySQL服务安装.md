@@ -8,37 +8,33 @@ tags:
 createTime: 2025/03/18 09:00:00
 permalink: /blog/zpxci6jd/
 ---
-[[toc]]
-
-#### 【Linux】【Docker】【MySQL】MySQL服务安装
-
-##### 1.新建宿主机挂载目录
+## 1.新建宿主机挂载目录
 
 ```bash
 mkdir -p /opt/app/mysql8.0/{conf}{data}{logs}
 ```
-##### 2.查询docker hub镜像
+## 2.查询docker hub镜像
 ```bash
 sudo docker search mysql
 ```
-##### 4.拉取镜像
+## 4.拉取镜像
 ```bash
 sudo docker pull mysql
 ```
-##### 5.查看本地镜像
+## 5.查看本地镜像
 ```bash
 sudo docker images
 ```
-##### 6.配置my.cnf
+## 6.配置my.cnf
 
-###### 6.1. 新建 my.cnf
+### 6.1. 新建 my.cnf
 
 ```bash
 cd /opt/app/mysql8.0/conf
 vim my.cnf
 ```
 
-###### 6.2.my.cnf
+### 6.2.my.cnf
 
 ```
 [client]
@@ -64,7 +60,7 @@ symbolic-links=0
 default-time_zone = '+8:00'
 ```
 
-##### 7.运行镜像
+## 7.运行镜像
 
 ```bash
 sudo docker run -d \
@@ -87,21 +83,21 @@ sudo docker run -d \
 | -v        | 卷挂载   |
 | --restart | 重启策略 |
 
-##### 8.服务设置
+## 8.服务设置
 
-###### 8.1. 进入镜像并登录
+### 8.1. 进入镜像并登录
 
 ```bash
 sudo docker exec -it mysql8.0 mysql -uroot -p
 ```
 
-###### 8.2. 新密码从任何主机登录。
+### 8.2. 新密码从任何主机登录。
 
 ```SQL
 ALTER USER 'root'@'%' IDENTIFIED BY '123456';
 ```
 
-##### 常用命令
+## 常用命令
 
 ```bash
 docker ps

@@ -9,26 +9,24 @@ createTime: 2025/03/18 09:00:00
 permalink: /blog/l8j0catv/
 ---
 
-#### 【Linux】【Docker】【Nginx】Nginx服务安装
-
-##### 1.新建宿主机挂载目录
+## 1.新建宿主机挂载目录
 
 ```bash
 mkdir -p /opt/app/nginx/{conf}{logs}{html}
 ```
-##### 2.查询docker hub镜像
+## 2.查询docker hub镜像
 ```bash
 sudo docker search nginx
 ```
-##### 4.拉取镜像
+## 4.拉取镜像
 ```bash
 sudo docker pull nginx
 ```
-##### 5.查看本地镜像
+## 5.查看本地镜像
 ```bash
 sudo docker images
 ```
-##### 6.运行镜像
+## 6.运行镜像
 ```bash
 sudo docker run -d \
   --name nginx \
@@ -50,7 +48,7 @@ sudo docker run -d \
 | -d        | 后台运行 |
 | --restart | 重启策略 |
 
-##### 常用命令
+## 常用命令
 
 ```bash
 docker ps

@@ -8,53 +8,48 @@ tags:
 createTime: 2025/03/18 09:00:00
 permalink: /blog/4f5zpe3s/
 ---
-
-#### 【Linux】【Docker】Ollama服务安装
-
-[[toc]]
-
 **参考**：https://hub.docker.com/r/ollama/ollama
 
-##### 2.安装NVIDIA 容器工具包
+## 2.安装NVIDIA 容器工具包
 
 https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html#installation
 
-###### 2.1.Linux Ubuntu 
+### 2.1.Linux Ubuntu 
 
 [【Linux】【Ubuntu】【NVIDIA】NVIDIA 容器工具包安装](./【Linux】【Ubuntu】【NVIDIA】NVIDIA 容器工具包安装.md)
 
-##### 2.配置 Docker 以使用 Nvidia 驱动程序
+## 2.配置 Docker 以使用 Nvidia 驱动程序
 
 ```bash
 sudo nvidia-ctk runtime configure --runtime=docker
 sudo systemctl restart docker
 ```
 
-##### 2.新建宿主机挂载目录
+## 2.新建宿主机挂载目录
 
 ```bash
 sudo mkdir ollama
 ```
 
-##### 2.查询docker hub镜像
+## 2.查询docker hub镜像
 
 ```bash
 sudo docker search ollama
 ```
 
-##### 4.拉取镜像
+## 4.拉取镜像
 
 ```bash
 docker pull ollama/ollama
 ```
 
-##### 5.查看本地镜像
+## 5.查看本地镜像
 
 ```bash
 sudo docker images
 ```
 
-##### 6.运行镜像
+## 6.运行镜像
 
 ```bash
 sudo docker run -d \
@@ -77,7 +72,7 @@ docker run -d -p 11434:11434 --gpus=all -v /opt/app/ollama:/root/.ollama -v open
 | -d        | 后台运行                  |
 | --restart | 重启策略(当前未设置)      |
 
-##### 常用命令
+## 常用命令
 
 ```bash
 docker ps

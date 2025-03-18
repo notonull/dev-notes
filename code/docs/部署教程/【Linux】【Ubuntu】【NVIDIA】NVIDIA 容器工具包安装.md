@@ -9,18 +9,16 @@ createTime: 2025/03/18 09:00:00
 permalink: /blog/1fj6c2ck/
 ---
 
-#### 【Linux】【Ubuntu】NVIDIA 容器工具包安装
-
 **参考**：https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html#installation
 
-##### 1.更新软件源
+## 1.更新软件源
 
 ```bash
 sudo apt update
 sudo apt upgrade
 ```
 
-##### 2.查询驱动
+## 2.查询驱动
 
 **输入指令**
 
@@ -51,14 +49,14 @@ sudo apt install nvidia-utils-525-server  # version 525.147.05-0ubuntu1
 sudo apt install nvidia-utils-550-server  # version 550.127.05-0ubuntu0.24.04.1
 ```
 
-##### 3.安装GPU驱动（验证输出：未安装）
+## 3.安装GPU驱动（验证输出：未安装）
 
 ```bash
 ## 选一个适合的，本次选择 服务器版本驱动包：主要针对服务器优化，但它同样适用于低端硬件，只是没有桌面驱动中的那些渲染功能。只要你的应用场景主要关注计算性能而非图形加速
 sudo apt install nvidia-utils-535-server
 ```
 
-##### 4.添加存储库
+## 4.添加存储库
 
 ```bash
 curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey \
@@ -68,13 +66,13 @@ curl -s -L https://nvidia.github.io/libnvidia-container/stable/deb/nvidia-contai
     | sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
 ```
 
-##### 5.再次更新软件源
+## 5.再次更新软件源
 
 ```bash
 sudo apt-get update
 ```
 
-##### 6.安装NVIDIA 容器工具包
+## 6.安装NVIDIA 容器工具包
 
 ```bash
 sudo apt-get install -y nvidia-container-toolkit

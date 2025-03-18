@@ -1,10 +1,12 @@
 ---
-title:【Linux】【Docker】Ollama服务安装
+title: 【Linux】【Docker】Ollama服务安装
+toc: true
 tags:
   - linux
   - docker
   - ollma
 createTime: 2025/03/18 09:00:00
+permalink: /blog/4f5zpe3s/
 ---
 
 #### 【Linux】【Docker】Ollama服务安装

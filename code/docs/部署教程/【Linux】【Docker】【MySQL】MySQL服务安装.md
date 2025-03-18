@@ -1,10 +1,11 @@
 ---
-title:【Linux】【Docker】【MySQL】MySQL服务安装
+title: 【Linux】【Docker】【MySQL】MySQL服务安装
 tags:
   - linux
   - docker
   - mysql
 createTime: 2025/03/18 09:00:00
+permalink: /blog/zpxci6jd/
 ---
 
 #### 【Linux】【Docker】【MySQL】MySQL服务安装

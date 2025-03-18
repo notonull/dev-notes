@@ -1,10 +1,11 @@
 ---
-title:【Linux】【Docker】【Nginx】Nginx服务安装
+title: 【Linux】【Docker】【Nginx】Nginx服务安装
 tags:
   - linux
   - docker
   - nginx
 createTime: 2025/03/18 09:00:00
+permalink: /blog/l8j0catv/
 ---
 
 #### 【Linux】【Docker】【Nginx】Nginx服务安装

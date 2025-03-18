@@ -1,10 +1,11 @@
 ---
-title:【Linux】【Ubuntu】NVIDIA 容器工具包安装
+title: 【Linux】【Ubuntu】NVIDIA 容器工具包安装
 tags:
   - linux
   - ubunto
   - nvidia
 createTime: 2025/03/18 09:00:00
+permalink: /blog/1fj6c2ck/
 ---
 
 #### 【Linux】【Ubuntu】NVIDIA 容器工具包安装

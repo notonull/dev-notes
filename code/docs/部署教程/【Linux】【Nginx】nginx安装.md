@@ -1,9 +1,10 @@
 ---
-title:Linux Nginx Install
+title: Linux Nginx Install
 tags:
   - linux
   - nginx
 createTime: 2025/03/18 09:00:00
+permalink: /blog/iwbpu2lv/
 ---
 
 ### Linux Nginx Install

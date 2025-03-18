@@ -1,10 +1,11 @@
 ---
-title:【Linux】【Ubuntu 】【Docker】Docker服务安装
+title: 【Linux】【Ubuntu 】【Docker】Docker服务安装
 tags:
   - linux
   - ubunto
   - docker
 createTime: 2025/03/18 09:00:00
+permalink: /blog/mpqs2g9m/
 ---
 
 #### 【Linux】【Ubuntu 】【Docker】Docker服务安装

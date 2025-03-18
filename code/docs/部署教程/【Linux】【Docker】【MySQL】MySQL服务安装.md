@@ -1,7 +1,6 @@
 ---
 title: 【Linux】【Docker】【MySQL】MySQL服务安装
 copyright: CC-BY-4.0
-toc: true
 tags:
   - linux
   - docker
@@ -9,6 +8,7 @@ tags:
 createTime: 2025/03/18 09:00:00
 permalink: /blog/zpxci6jd/
 ---
+[[toc]]
 
 #### 【Linux】【Docker】【MySQL】MySQL服务安装
 

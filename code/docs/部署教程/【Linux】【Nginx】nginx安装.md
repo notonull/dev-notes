@@ -1,7 +1,6 @@
 ---
 title: Linux Nginx Install
 copyright: CC-BY-4.0
-toc: true
 tags:
   - linux
   - nginx

@@ -1,7 +1,6 @@
 ---
 title: 【Linux】【Docker】Ollama服务安装
 copyright: CC-BY-4.0
-toc: true
 tags:
   - linux
   - docker
@@ -11,6 +10,8 @@ permalink: /blog/4f5zpe3s/
 ---
 
 #### 【Linux】【Docker】Ollama服务安装
+
+[[toc]]
 
 **参考**：https://hub.docker.com/r/ollama/ollama
 

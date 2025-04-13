@@ -9,31 +9,28 @@ createTime: 2025/04/12 17:00:02
 permalink: /blog/rek825cy/
 ---
 
-## 内容
+## 1.镜像获取
 
-### 1.镜像获取
-
-#### 1.1.查询docker hub镜像
+### 1.1.查询docker hub镜像
 
 ```bash
 sudo docker search nginx
 ```
 
-#### 1.2.拉取镜像
+### 1.2.拉取镜像
 
 ```bash
 sudo docker pull nginx
 ```
 
-#### 1.3.查看本地镜像
+### 1.3.查看本地镜像
 
 ```bash
 sudo docker images
 ```
 
-### 2.环境准备
-
-#### 2.1.新建宿主机挂载目录
+## 2.环境准备
+### 2.1.新建宿主机挂载目录
 
 ```bash
 sudo mkdir -p /opt/app/nginx
@@ -42,9 +39,9 @@ sudo mkdir -p /opt/app/nginx/logs
 sudo mkdir -p /opt/app/nginx/html
 ```
 
-### 3.启动镜像
+## 3.启动镜像
 
-#### 3.1.运行镜像
+### 3.1.运行镜像
 
 ```shell
 sudo docker run -d \
@@ -59,7 +56,7 @@ sudo docker run -d \
   nginx:latest
 ```
 
-#### 3.2.参数解释
+### 3.2.参数解释
 
 | 指令        | 描述     |
 | ----------- | -------- |
@@ -83,13 +80,13 @@ sudo docker run -d \
 | `--restart always`                                        | 容器意外停止或系统重启时自动启动 |
 | `nginx:latest`                                            | 使用 nginx:latest 镜像           |
 
-### 4.后续配置
+## 4.后续配置
 
-#### 4.1. 配置conf
+### 4.1. 配置conf
 
 [【Nginx】conf配置模板](../代码模板/【Nginx】conf配置模板.md)
 
-### 常用命令
+## 常用命令
 
 ```markdown
 ## 查看所有容器

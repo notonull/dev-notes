@@ -11,31 +11,29 @@ permalink: /blog/zpxci6jd/
 
 ---
 
-## 内容
+## 1.镜像获取
 
-### 1.镜像获取
-
-#### 1.1.查询docker hub镜像
+### 1.1.查询docker hub镜像
 
 ```bash
 sudo docker search mysql
 ```
 
-#### 1.2.拉取镜像
+### 1.2.拉取镜像
 
 ```bash
 sudo docker pull mysql
 ```
 
-#### 1.3.查看本地镜像
+### 1.3.查看本地镜像
 
 ```bash
 sudo docker images
 ```
 
-### 2.环境准备
+## 2.环境准备
 
-#### 2.1.新建宿主机挂载目录
+### 2.1.新建宿主机挂载目录
 
 ```bash
 sudo mkdir -p /opt/app/mysql8.0
@@ -44,13 +42,13 @@ sudo mkdir -p /opt/app/mysql8.0/data
 sudo mkdir -p /opt/app/mysql8.0/logs
 ```
 
-#### 2.2.新增my.conf
+### 2.2.新增my.conf
 
 ```bash
 sudo vim /opt/app/mysql8.0/conf/my.cnf
 ```
 
-#### 2.3.配置my.conf
+### 2.3.配置my.conf
 
 ```markdown
 [client]
@@ -76,9 +74,9 @@ symbolic-links=0
 default-time_zone = '+8:00'
 ```
 
-### 3.启动镜像
+## 3.启动镜像
 
-#### 3.1.运行镜像
+### 3.1.运行镜像
 
 ```shell
 sudo docker run -d \
@@ -92,7 +90,7 @@ sudo docker run -d \
   mysql:latest
 ```
 
-#### 3.2.参数解释
+### 3.2.参数解释
 
 | 指令        | 描述     |
 | ----------- | -------- |
@@ -115,9 +113,9 @@ sudo docker run -d \
 | `--restart always`                                   | 容器意外停止或系统重启时自动启动 |
 | `mysql:latest`                                       | 使用最新版的 MySQL 镜像          |
 
-### 4.后续配置
+## 4.后续配置
 
-#### 4.1. 进入镜像并登录
+### 4.1. 进入镜像并登录
 
 密码：123456 运行镜像时设置root密码为123456
 
@@ -125,13 +123,13 @@ sudo docker run -d \
 sudo docker exec -it mysql8.0 mysql -uroot -p
 ```
 
-#### 4.2. 新密码从任何主机登录。
+### 4.2. 新密码从任何主机登录。
 
 ```SQL
 ALTER USER 'root'@'%' IDENTIFIED BY '123456';
 ```
 
-### 常用命令
+## 常用命令
 
 ```markdown
 ## 查看所有容器

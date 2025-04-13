@@ -8,9 +8,7 @@ createTime: 2025/04/13 00:09:35
 permalink: /blog/bja29csb/
 ---
 
-## 内容
-
-### 1.参考
+## 1.参考
 
 **官方地址:**
 http://nginx.org
@@ -21,17 +19,17 @@ http://nginx.org/en/download.html
 **官方文档**
 http://nginx.org/en/docs/
 
-### 2.环境准备
+## 2.环境准备
 
-#### 2.1.离线源配置（可选）
+### 2.1.离线源配置（可选）
 
-##### 2.1.1.挂载镜像
+#### 2.1.1.挂载镜像
 
 ```bash
 mount /path/to/CentOS.iso /mnt/iso
 ```
 
-##### 2.1.2.根据系统：配置源（dep）
+#### 2.1.2.根据系统：配置源（dep）
 
 ```markdown
 ## 配置deb源
@@ -40,7 +38,7 @@ deb [trusted=yes] file:/mnt/iso focal main restricted
 apt update
 ```
 
-##### 2.1.3.根据系统：配置源（rpm）
+#### 2.1.3.根据系统：配置源（rpm）
 
 ```bash
 ## 配置yum源
@@ -55,9 +53,9 @@ gpgcheck=0
 yum clean all && yum makecache
 ```
 
-##### 2.1.4.安装见2.3、2.4
+#### 2.1.4.安装见2.3、2.4
 
-#### 2.2.上传安装
+### 2.2.上传安装
 
 ```markdown
 # 安装方式（不推荐建议2.1.2方式）
@@ -71,7 +69,7 @@ sudo dpkg -i *.deb
 sudo rpm -ivh *.rpm
 ```
 
-#### 2.3.yum安装
+### 2.3.yum安装
 
 ```bash
 ## 安装全部
@@ -101,7 +99,7 @@ yum install -y openssl openssl-devel
 | `zlib/zlib-devel`       | 支持 Gzip 压缩     |
 | `openssl/openssl-devel` | 支持 HTTPS 协议    |
 
-#### 2.4.apt安装
+### 2.4.apt安装
 
 ```bash
 ## 更新源
@@ -119,9 +117,9 @@ sudo apt install -y build-essential libpcre3 libpcre3-dev zlib1g zlib1g-dev libs
 | `zlib1g-dev`      | zlib 的开发文件，编译 Nginx 的 gzip 模块时需要。             |
 | `libssl-dev`      | OpenSSL 的开发包，提供加密功能，编译带有 HTTPS（SSL）支持的 Nginx 时需要。 |
 
-### 3.安装服务
+## 3.安装服务
 
-#### 3.1.上传nginx源码包
+### 3.1.上传nginx源码包
 
 ```bash
 #可选步骤*根据情况选择上传方式
@@ -134,7 +132,7 @@ rz
 tar -zxvf nginx-*.tar.gz
 ```
 
-#### 3.2.编译
+### 3.2.编译
 
 ```bash
 ## cd 源码包
@@ -154,25 +152,25 @@ cd /opt/src/nginx-*
 | `--with-http_gzip_static_module` | 启用对 `.gz` 静态文件的支持，提升性能                      |
 | `--with-ipv6`                    | 启用对 IPv6 的支持                                         |
 
-#### 3.3.安装
+### 3.3.安装
 
 ```bash
 make & make install
 ```
 
-#### 3.4.服务位置
+### 3.4.服务位置
 
 ```bash
 cd /opt/app/nginx
 ```
 
-### 4.后续配置
+## 4.后续配置
 
-#### 4.1.conf配置
+### 4.1.conf配置
 
 [【Nginx】conf配置模板](../代码模板/【Nginx】conf配置模板.md)
 
-### 常用命令
+## 常用命令
 
 ```bash
 ## 检查 nginx 配置

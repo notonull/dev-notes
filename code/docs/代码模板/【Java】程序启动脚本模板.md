@@ -8,11 +8,9 @@ createTime: 2025/04/13 01:22:24
 permalink: /blog/ap9mb4mk/
 ---
 
-## 内容
+## 1.linux
 
-### 1.linux
-
-#### 1.1.app.sh
+### 1.1.app.sh
 
 ```shell
 #!/bin/bash

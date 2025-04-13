@@ -8,18 +8,16 @@ createTime: 2025/04/13 00:54:42
 permalink: /blog/tderbfpt/
 ---
 
-## 内容
-
-### 一、简介
+## 一、简介
 
 - JSQLParser 实现 高级 SQL 查询，通过 WITH AS 子句 构建复杂的 SELECT 查询。展示动态 SQL 生成，并结合 聚合函数（如 `SUM`、`MAX`）、逻辑运算符（如 `AND`、`OR`）、连接操作符（如 `JOIN`）以及 子查询 来构建高效的 SQL 查询。通过具体的代码示例。演示包含 多个 WITH 子句、排序、分组、分页等复杂功能的 SQL 查询。
 
 - 当前为应用实例，后续继续补充，jsqlparser 源码实现逻辑等
 
 
-### 二、前置准备
+## 二、前置准备
 
-#### 1.maven配置
+### 1.maven配置
 
 | 序号 | 名称         | 版本   | 重要   |
 | ---- | ------------ | ------ | ------ |
@@ -35,9 +33,9 @@ permalink: /blog/tderbfpt/
 </dependency>
 ```
 
-### 三、代码实现
+## 三、代码实现
 
-#### 1.SQL标志符 Token
+### 1.SQL标志符 Token
 
 ```java
 @AllArgsConstructor
@@ -163,9 +161,9 @@ public enum SqlToken {
 
 
 
-#### 2.SQL表达式解析
+### 2.SQL表达式解析
 
-##### 2.1 查询表达式 
+#### 2.1 查询表达式 
 
 ```java
 public static Select parseSelectSqlExpr(String selectSql) {
@@ -184,7 +182,7 @@ public static Select parseSelectSqlExpr(String selectSql) {
 
 
 
-##### 2.2 值表达式 
+#### 2.2 值表达式 
 
 ```java
 public static Expression parseValueExpr(Object value) {
@@ -201,7 +199,7 @@ public static Expression parseValueExpr(Object value) {
 
 
 
-##### 2.3 SQL片段
+#### 2.3 SQL片段
 
 ```java
 public static Expression parseSqlExpr(String exprStr) {
@@ -215,9 +213,9 @@ public static Expression parseSqlExpr(String exprStr) {
 
 
 
-#### 3. SQL表达式创建
+### 3. SQL表达式创建
 
-##### 3.1 列 column
+#### 3.1 列 column
 
 ```java
 public static Expression createColumnExpr(String tableAlise, String columnName) {
@@ -230,7 +228,7 @@ public static Expression createColumnExpr(String tableAlise, String columnName) 
 
 
 
-##### 3.2 表 Table
+#### 3.2 表 Table
 
 ```java
 public static Table createTableExpr(String tableName, String alise) {
@@ -245,7 +243,7 @@ public static Table createTableExpr(String tableName, String alise) {
 
 
 
-##### 3.3 查询项 SelectItem
+#### 3.3 查询项 SelectItem
 
 ```java
 public static SelectItem createSelectItemExpr(String tableAlise, String columnName, String alise) {
@@ -266,9 +264,9 @@ public static SelectItem createSelectItemExpr(Expression expression, String alis
 
 
 
-##### 3.4 条件 Condition
+#### 3.4 条件 Condition
 
-###### 3.4.1 条件 Conditon
+##### 3.4.1 条件 Conditon
 
 ```java
 public static Expression createConditionExpr(String tableAlise, String columnName, SqlToken condition, List<Object> values) {
@@ -307,7 +305,7 @@ public static Expression createConditionExpr(String tableAlise, String columnNam
 
 
 
-###### 3.4.2 等于 Eq
+##### 3.4.2 等于 Eq
 
 ```java
 public static Expression createEqConditionExpr(String tableAlise, String columnName, Object value) {
@@ -322,9 +320,7 @@ public static Expression createEqConditionExpr(Expression columnExpr, Expression
 }
 ```
 
-
-
-#### 3.4.3 不等于 Neq
+##### 3.4.3 不等于 Neq
 
 ```java
 public static Expression createNeqConditionExpr(String tableAlise, String columnName, Object value) {
@@ -340,7 +336,7 @@ public static Expression createNeqConditionExpr(Expression columnExpr, Expressio
 
 
 
-###### 3.4.4 大于 Gt
+##### 3.4.4 大于 Gt
 
 ```java
 public static Expression createGtConditionExpr(String tableAlise, String columnName, Object value) {
@@ -359,7 +355,7 @@ public static Expression createGtConditionExpr(Expression columnExpr, Expression
 
 
 
-###### 3.4.5 大于等于 Gte
+##### 3.4.5 大于等于 Gte
 
 ```java
 public static Expression createGteConditionExpr(String tableAlise, String columnName, Object value) {
@@ -379,7 +375,7 @@ public static Expression createGteConditionExpr(Expression columnExpr, Expressio
 
 
 
-###### 3.4.6 小于 Lt
+##### 3.4.6 小于 Lt
 
 ```java
 public static Expression createLtConditionExpr(String tableAlise, String columnName, Object value) {
@@ -398,7 +394,7 @@ public static Expression createLtConditionExpr(Expression columnExpr, Expression
 
 
 
-###### 3.4.7 小于等于 Lte
+##### 3.4.7 小于等于 Lte
 
 ```java
 public static Expression createLteConditionExpr(String tableAlise, String columnName, Object value) {
@@ -417,7 +413,7 @@ public static Expression createLteConditionExpr(Expression columnExpr, Expressio
 
 
 
-###### 3.4.8 范围 Between
+##### 3.4.8 范围 Between
 
 ```java
 public static Expression createBetweenConditionExpr(String tableAlise, String columnName, Object startValue, Object endValue) {
@@ -437,7 +433,7 @@ public static Expression createBetweenConditionExpr(Expression columnExpr, Expre
 
 
 
-###### 3.4.9 模糊 Like/NotLike
+##### 3.4.9 模糊 Like/NotLike
 
 ```java
 public static Expression createLikeConditionExpr(String tableAlise, String columnName, Object value, Boolean isNot) {
@@ -457,7 +453,7 @@ public static Expression createLikeConditionExpr(Expression columnExpr, Expressi
 
 
 
-###### 3.4.10 匹配 In/NotIn
+##### 3.4.10 匹配 In/NotIn
 
 ```java
 public static Expression createInConditionExpr(String tableAlise, String columnName, List<Object> values, Boolean isNot) {
@@ -478,7 +474,7 @@ public static Expression createInConditionExpr(Expression columnExpr, Expression
 
 
 
-###### 3.4.11 判空 IsNull/IsNotNull
+##### 3.4.11 判空 IsNull/IsNotNull
 
 ```java
 public static Expression createIsNullConditionExpr(String tableAlise, String columnName, Boolean isNot) {
@@ -496,9 +492,9 @@ public static Expression createIsNullConditionExpr(Expression columnExpr, Boolea
 
 
 
-##### 3.5 逻辑符 LogicalOperator
+#### 3.5 逻辑符 LogicalOperator
 
-###### 3.5.1 逻辑符 LogicalOperator
+##### 3.5.1 逻辑符 LogicalOperator
 
 ```java
 public static Expression createLogicalOperatorExpr(SqlToken LogicalOperator, Expression leftConditionExpr, Expression rightConditionExpr) {
@@ -517,7 +513,7 @@ public static Expression createLogicalOperatorExpr(SqlToken LogicalOperator, Exp
 
 
 
-###### 3.5.2 与 And
+##### 3.5.2 与 And
 
 ```java
 public static Expression createAndLogicalOperatorExpr(Expression leftConditionExpr, Expression rightConditionExpr) {
@@ -527,7 +523,7 @@ public static Expression createAndLogicalOperatorExpr(Expression leftConditionEx
 
 
 
-###### 3.5.3 或 Or
+##### 3.5.3 或 Or
 
 ```java
 public static Expression createOrLogicalOperatorExpr(Expression leftConditionExpr, Expression rightConditionExpr) {
@@ -537,7 +533,7 @@ public static Expression createOrLogicalOperatorExpr(Expression leftConditionExp
 
 
 
-###### 3.5.4 非 Not
+##### 3.5.4 非 Not
 
 ```java
 public static Expression createNotLogicalOperatorExpr(Expression conditionExpr) {
@@ -547,9 +543,9 @@ public static Expression createNotLogicalOperatorExpr(Expression conditionExpr) 
 
 
 
-##### 3.6 Case
+#### 3.6 Case
 
-###### 3.6.1 When
+##### 3.6.1 When
 
 ```java
 public static WhenClause createWhenItemExpr(String tableAlise, String columnName, SqlToken conditionType, List<Object> comparativeValues, Object value) {
@@ -578,7 +574,7 @@ public static WhenClause createWhenItemExpr(Expression whenExpr, Expression then
 
 
 
-###### 3.6.2 Case
+##### 3.6.2 Case
 
 ```java
 public static CaseExpression createCaseExpr(List<WhenClause> whenExprList, Expression elseExpr) {
@@ -591,9 +587,9 @@ public static CaseExpression createCaseExpr(List<WhenClause> whenExprList, Expre
 
 
 
-##### 3.7 函数 Function
+#### 3.7 函数 Function
 
-###### 3.7.1 SUM/AVG/MAX...
+##### 3.7.1 SUM/AVG/MAX...
 
 ```java
 public static Function createFuncExpr(String func, List<Expression> exprList) {
@@ -606,7 +602,7 @@ public static Function createFuncExpr(String func, List<Expression> exprList) {
 
 
 
-##### 3.8 关联 Join
+#### 3.8 关联 Join
 
 ```java
 public static Join createJoinExpr(SqlToken joinType, Table rightTable, List<Expression> conditions) {
@@ -632,7 +628,7 @@ public static Join createJoinExpr(SqlToken joinType, Table rightTable, List<Expr
 
 
 
-##### 3.9 排序 Order
+#### 3.9 排序 Order
 
 ```java
 public static OrderByElement createOrderExpr(String tableAlise, String columnName, Boolean isAsc) {
@@ -650,7 +646,7 @@ public static OrderByElement createOrderExpr(Expression leftExpr, Boolean isAsc)
 
 
 
-##### 3.10 分组 Group
+#### 3.10 分组 Group
 
 ```java
 public static GroupByElement createGroupsExpr(Expression... expr) {
@@ -668,9 +664,9 @@ public static GroupByElement createGroupsExpr(List<Expression> expr) {
 
 
 
-##### 3.11 限制/分页 Limit
+#### 3.11 限制/分页 Limit
 
-###### 3.11.1 限制
+##### 3.11.1 限制
 
 ```java
 public static Limit createLimitExpr(Long offset, Long rowCount) {
@@ -683,7 +679,7 @@ public static Limit createLimitExpr(Long offset, Long rowCount) {
 
 
 
-###### 3.11.2 分页
+##### 3.11.2 分页
 
 ```java
 public static Limit createPageExpr(Long pageNo, Long pageSize) {
@@ -697,9 +693,9 @@ public static Limit createPageExpr(Long pageNo, Long pageSize) {
 
 
 
-##### 3.12 集合 SetOperation
+#### 3.12 集合 SetOperation
 
-###### 3.12.1 集合 SetOperation
+##### 3.12.1 集合 SetOperation
 
 ```java
 public static SetOperation createSetOperationExpr(SqlToken setOperationType) {
@@ -724,7 +720,7 @@ public static SetOperation createSetOperationExpr(SqlToken setOperationType) {
 
 
 
-###### 3.12.2 合集 Union/UnionAll
+##### 3.12.2 合集 Union/UnionAll
 
 ```java
 public static UnionOp createUnionSetOperationExpr(Boolean isAll) {
@@ -736,7 +732,7 @@ public static UnionOp createUnionSetOperationExpr(Boolean isAll) {
 
 
 
-###### 3.12.3 差集 Except/Minus
+##### 3.12.3 差集 Except/Minus
 
 ```java
 public static ExceptOp createExceptSetOperationExpr() {
@@ -750,7 +746,7 @@ public static MinusOp createMinusSetOperationExpr() {
 
 
 
-###### 3.12.4 交集 Intersect
+##### 3.12.4 交集 Intersect
 
 ```java
 public static IntersectOp createIntersectSetOperationExpr() {
@@ -760,9 +756,9 @@ public static IntersectOp createIntersectSetOperationExpr() {
 
 
 
-##### 3.13 查询 Select
+#### 3.13 查询 Select
 
-###### 3.13.1 查询语句 Select
+##### 3.13.1 查询语句 Select
 
 ```java
 public static PlainSelect createSelectExpr(List<WithItem> withSelectItems, List<SelectItem<?>> selectItems, FromItem from, List<Join> joins, Expression where, GroupByElement groups, List<OrderByElement> orders, Limit limit) {
@@ -781,7 +777,7 @@ public static PlainSelect createSelectExpr(List<WithItem> withSelectItems, List<
 
 
 
-###### 3.13.2 With查询语句 WithAsSelect
+##### 3.13.2 With查询语句 WithAsSelect
 
 ```java
 public static WithItem createWithItemSelectExpr(String alise, Select select) {
@@ -800,7 +796,7 @@ public static WithItem createWithItemSelectExpr(String alise, Select select) {
 
 
 
-###### 3.13.3 带括号的查询语句 ParenthesedSelect 
+##### 3.13.3 带括号的查询语句 ParenthesedSelect 
 
 ```java
 public static ParenthesedSelect createParenthesizedSubquerySelectExpr(Select select) {
@@ -810,11 +806,11 @@ public static ParenthesedSelect createParenthesizedSubquerySelectExpr(Select sel
 }
 ```
 
-### 四、演示操作
+## 四、演示操作
 
-#### 1.用例演示
+### 1.用例演示
 
-##### 1.1 输入
+#### 1.1 输入
 
 ```java
 public static void main2() {
@@ -1007,7 +1003,7 @@ public static void main2() {
 
 
 
-##### 1.2 输出
+#### 1.2 输出
 
 ```sql
 [解析查询语句]
@@ -1170,9 +1166,9 @@ public static void main2() {
  INTERSECT
 ```
 
-#### 2.高级查询
+### 2.高级查询
 
-##### 2.1 输入
+#### 2.1 输入
 
 **包含with as 等复杂查询**
 
@@ -1212,7 +1208,7 @@ public static void main1() {
     }
 ```
 
-##### 2.2 输出
+#### 2.2 输出
 
 ```sql
 WITH 

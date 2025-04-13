@@ -6,17 +6,15 @@ tags:
   - redis
 ---
 
-## 内容
-
-### 一、简介
+## 一、简介
 
 RedisExtUtil 是一个基于 Spring 和 RedisTemplate 的扩展工具类，旨在提供更便捷的 Redis 操作方法，包括基础的 Key-Value 操作、分布式锁以及批量操作。本篇博客将介绍该工具类的核心功能及其批量操作的使用方法。
 
-### 二、前置准备
+## 二、前置准备
 
 在使用 RedisExtUtil 工具类之前，需要确保以下准备工作：
 
-#### 1.Maven配置
+### 1.Maven配置
 
 ```XML
 <!-- 这里排除了lettuce 根据情况需不需要排除 -->
@@ -39,7 +37,7 @@ RedisExtUtil 是一个基于 Spring 和 RedisTemplate 的扩展工具类，旨�
 </dependency>
 ```
 
-#### 2.Spring 配置
+### 2.Spring 配置
 
 ```java
 @Bean
@@ -62,7 +60,7 @@ public class FastJson2JsonRedisSerializer<T> implements RedisSerializer<T> {
 }
 ```
 
-#### 3.Hutool 工具类依赖
+### 3.Hutool 工具类依赖
 
 这些依赖非关键代码，可以根据需求自行替换
 
@@ -79,7 +77,7 @@ import cn.hutool.crypto.digest.DigestUtil;
 import cn.hutool.extra.spring.SpringUtil;
 ```
 
-#### 4.线程池配置
+### 4.线程池配置
 
 ```java
 @Bean
@@ -99,15 +97,15 @@ public ThreadPoolTaskExecutor taskExecutor() {
 }
 ```
 
-#### 5.Redis 服务
+### 5.Redis 服务
 
 确保 Redis 服务已启动，并配置正确的连接参数。
 
-### 三、代码实现
+## 三、代码实现
 
-#### 1.基础方法
+### 1.基础方法
 
-##### 1.1.获取 RedisTemplate
+#### 1.1.获取 RedisTemplate
 
 ```java
 public static <T> RedisTemplate<String, T> getDefaultRedisTemplate() {
@@ -115,7 +113,7 @@ public static <T> RedisTemplate<String, T> getDefaultRedisTemplate() {
 }
 ```
 
-##### 1.2.Key 的生成规则
+#### 1.2.Key 的生成规则
 
 ```java
 public static String calcKey(String prefix, String key) {
@@ -123,7 +121,7 @@ public static String calcKey(String prefix, String key) {
 }
 ```
 
-##### 1.3.写入数据
+#### 1.3.写入数据
 
 ```java
 public static <T> void put(String prefix, String key, T value) {
@@ -136,7 +134,7 @@ public static <T> void put(RedisTemplate<String, T> redisTemplate, String prefix
 }
 ```
 
-##### 1.4.读取数据
+#### 1.4.读取数据
 
 ```java
 public static <T> T get(String prefix, String key, Class<T> clazz) {
@@ -149,7 +147,7 @@ public static <T> T get(RedisTemplate<String, T> redisTemplate, String prefix, S
 }
 ```
 
-##### 1.5.删除数据
+#### 1.5.删除数据
 
 ```java
 public static void remove(String prefix, String... key) {
@@ -162,7 +160,7 @@ public static <T> void remove(RedisTemplate<String, T> redisTemplate, String pre
 }
 ```
 
-##### 1.6.获取所有 Key
+#### 1.6.获取所有 Key
 
 ```java
 public static List<String> getAllKeys(String prefix) {
@@ -178,9 +176,9 @@ public static <T> List<String> getAllKeys(RedisTemplate<String, T> redisTemplate
 }
 ```
 
-#### 2.分布式锁
+### 2.分布式锁
 
-##### 2.1.阻塞式锁
+#### 2.1.阻塞式锁
 
 ```java
 public static void lock(String prefix, String lockKey, Long expiryTime) {
@@ -216,7 +214,7 @@ public static void lock(RedisTemplate<String, Object> redisTemplate, String pref
 }
 ```
 
-##### 2.2.非阻塞式锁
+#### 2.2.非阻塞式锁
 
 ```java
 public static Boolean tryLock(String prefix, String lockKey, Long expiryTime) {
@@ -236,7 +234,7 @@ public static Boolean tryLock(RedisTemplate<String, Object> redisTemplate, Strin
 }
 ```
 
-##### 2.3.释放锁
+#### 2.3.释放锁
 
 ```java
 public static void unlock(String prefix, String lockKey) {
@@ -249,9 +247,9 @@ public static void unlock(RedisTemplate<String, Object> redisTemplate, String pr
 }
 ```
 
-#### 3.批量操作
+### 3.批量操作
 
-##### 3.1.批量写入
+#### 3.1.批量写入
 
 ```java
 /**
@@ -299,7 +297,7 @@ public static <T> void writeBatch(RedisTemplate<String, T> redisTemplate, String
 }
 ```
 
-##### 3.2.批量读取
+#### 3.2.批量读取
 
 ```java
 /**
@@ -347,7 +345,7 @@ public static <T> Map<String, T> readBatch(RedisTemplate<String, T> redisTemplat
 }
 ```
 
-##### 3.3.多任务批量写入
+#### 3.3.多任务批量写入
 
 ```java
 /**
@@ -415,7 +413,7 @@ public static <T> void writeBatchTask(RedisTemplate<String, T> redisTemplate, St
 }
 ```
 
-##### 3.4.批量读取
+#### 3.4.批量读取
 
 ```java
 /**
@@ -489,9 +487,9 @@ public static <T> Map<String, T> readBatchTask(RedisTemplate<String, T> redisTem
 }
 ```
 
-#### 4.辅助操作
+### 4.辅助操作
 
-##### 4.1.是否匹配Key（忽略大小写）
+#### 4.1.是否匹配Key（忽略大小写）
 
 ```java
 public static boolean containsAllByIgnoreCase(Collection<String> redisKeys, Collection<String> mapKeys) {
@@ -516,7 +514,7 @@ public static boolean containsAllByIgnoreCase(Collection<String> redisKeys, Coll
 }
 ```
 
-##### 4.2.切分Map
+#### 4.2.切分Map
 
 ```java
 public static <T> List<Map<String, T>> partitionByMap(Map<String, T> toMaps, int nums) {
@@ -545,7 +543,7 @@ public static <T> List<Map<String, T>> partitionByMap(Map<String, T> toMaps, int
 }
 ```
 
-### 三、演示操作
+## 三、演示操作
 
 展示部分操作，锁操作
 

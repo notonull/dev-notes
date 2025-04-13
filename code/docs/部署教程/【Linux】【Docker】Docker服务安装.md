@@ -10,9 +10,7 @@ updateTime: 2025/04/12 19:11:00
 permalink: /blog/mpqs2g9m/
 ---
 
-## 内容
-
-### 1.参考
+## 1.参考
 
 **官方地址:**
 http://test.com
@@ -23,43 +21,43 @@ http://test.com/en/download.html
 **官方文档**
 http://test.com/
 
-### 2.安装服务
+## 2.安装服务
 
-#### 2.1.apt安装
+### 2.1.apt安装
 
-##### 2.1.1.更新软件源
+#### 2.1.1.更新软件源
 
 ```bash
 sudo apt update
 sudo apt upgrade
 ```
 
-##### 2.1.2.安装依赖
+#### 2.1.2.安装依赖
 
 ```bash
 sudo apt install apt-transport-https ca-certificates curl gnupg2 software-properties-common
 ```
 
-##### 2.1.3.使用阿里云Docker CE仓库GPG密钥
+#### 2.1.3.使用阿里云Docker CE仓库GPG密钥
 
 ```bash
 curl -fsSL https://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo apt-key add -
 ```
 
-##### 2.1.4.添加阿里云的仓库
+#### 2.1.4.添加阿里云的仓库
 
 ```bash
 sudo add-apt-repository "deb [arch=amd64] https://mirrors.aliyun.com/docker-ce/linux/ubuntu $(lsb_release -cs) stable"
 ```
 
-##### 2.1.5.再次更新软件源
+#### 2.1.5.再次更新软件源
 
 ```BASH
 sudo apt update
 sudo apt upgrade
 ```
 
-##### 2.1.6.安装docker
+#### 2.1.6.安装docker
 
 ```bash
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
@@ -73,11 +71,11 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin 
 | `docker-buildx-plugin`  | 增强的构建工具插件                           |
 | `docker-compose-plugin` | 管理和运行多容器应用插件                     |
 
-#### 2.2.yum安装
+### 2.2.yum安装
 
-### 3.后续配置
+## 3.后续配置
 
-#### 3.1.DockerHub
+### 3.1.DockerHub
 
 **国内DockerHub因不知名原因无法访问，各大互联网服务相继关停，目前只能尝试不断更新镜像站源**
 
@@ -87,7 +85,7 @@ https://zhuanlan.zhihu.com/p/24461370776
 https://cloud.tencent.com/developer/article/2485043
 ```
 
-#### 3.2.配置镜像源列表
+### 3.2.配置镜像源列表
 
 ```bash
 sudo vim /etc/docker/daemon.json <<EOF
@@ -100,14 +98,14 @@ sudo vim /etc/docker/daemon.json <<EOF
 EOF
 ```
 
-#### 3.1.docker重启
+### 3.3.docker重启
 
 ```bash
 systemctl daemon-reload
 systemctl restart docker
 ```
 
-### 常用命令
+## 常用命令
 
 ```bash
 ## 查看所有容器

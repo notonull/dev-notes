@@ -8,9 +8,8 @@ createTime: 2025/04/13 15:41:43
 permalink: /blog/39xnr1uy/
 ---
 
-## 内容
 
-### 1.nginx.conf
+## 1.nginx.conf
 
 ```markdown
 # 启动 8 个工作进程，通常为 CPU 核心数的倍数，能够提高并发处理能力。
@@ -111,7 +110,7 @@ http {
 
 ```
 
-### 2.conf.d/*.conf
+## 2.conf.d/*.conf
 
 ```markdown
 server {

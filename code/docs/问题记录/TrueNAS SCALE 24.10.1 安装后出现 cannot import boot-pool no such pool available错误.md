@@ -3,6 +3,8 @@ title: TrueNAS SCALE 24.10.1 安装后出现 cannot import boot-pool no such poo
 copyright: CC-BY-4.0
 tags:
   - truenas
+createTime: 2025/04/13 01:30:19
+permalink: /blog/zjf0rp91/
 ---
 
 ## 内容

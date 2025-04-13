@@ -4,6 +4,8 @@ copyright: CC-BY-4.0
 tags:
   - 模板
   - docker
+createTime: 2025/04/12 19:00:24
+permalink: /blog/sh70nkiv/
 ---
 
 ## 内容

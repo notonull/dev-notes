@@ -4,6 +4,8 @@ copyright: CC-BY-4.0
 tags:
   - java
   - jsqlparser
+createTime: 2025/04/13 00:54:42
+permalink: /blog/tderbfpt/
 ---
 
 ## 内容

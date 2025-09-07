@@ -1,3 +1,8 @@
+---
+title: 【Oracle】表&视图&存储过程说明
+createTime: 2025/09/03 00:49:28
+permalink: /blog/krid75xu/
+---
 ## 1.表
 
 ## 2.视图

@@ -4,7 +4,8 @@ copyright: CC-BY-4.0
 tags:
   - oracle
   - binlog
-
+createTime: 2025/09/03 00:49:28
+permalink: /blog/1ruj2iuc/
 ---
 
 ## 1.简介

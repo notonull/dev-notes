@@ -33,15 +33,39 @@ sudo docker images
 ### 2.1.新建宿主机挂载目录
 
 ```bash
-sudo mkdir -p #路径
+sudo mkdir -p /opt/server/* #路径
 ```
 
 ## 3.启动镜像
 
 ### 3.1.运行镜像
 
-```bash
+#### 3.1.1.docker run 运行
+
+```shell
 sudo docker run ...
+```
+
+#### 3.1.2.docker compose 运行
+
+```bash
+## 切换目录
+cd /opt/server/*
+## 设置docker compose yml
+vim docker-compose.yml
+## 后台启动
+docker compose up -d
+## 关闭销毁
+docker compose down
+```
+
+**docker-compose.yml**
+
+```yaml
+version: "3.9"
+
+services:
+
 ```
 
 ### 3.2.参数解释
@@ -65,7 +89,8 @@ sudo docker run ...
 
 ## 常用命令
 
-```bash
+```markdown
+# docker命令
 ## 查看所有容器
 docker ps -a
 ## 查看所有镜像
@@ -80,5 +105,22 @@ docker rmi [镜像ID]
 docker stop [容器ID或容器名]
 ## 启动容器
 docker start [容器ID或容器名]
+
+# docker compose命令
+## cd到docker-compose.yml所在目录
+## 启动服务（后台模式）
+docker compose up -d
+## 启动服务（前台模式，日志直接输出）
+docker compose up
+## 停止服务
+docker compose down
+## 仅停止服务，不删除网络或卷
+docker compose stop
+## 启动已停止的服务
+docker compose start
+## 重启服务
+docker compose restart
 ```
+
+
 

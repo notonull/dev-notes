@@ -80,7 +80,7 @@ services:
     command: >
       redis-server
       --bind 0.0.0.0
-      --requirepass "Ewecan,123"
+      --requirepass "123456"
 
     restart: unless-stopped
 ```
@@ -96,15 +96,15 @@ services:
 | `-v`        | 卷挂载   |
 | `--restart` | 重启策略 |
 
-| 参数                                                     | 描述                                     |
-| -------------------------------------------------------- | ---------------------------------------- |
-| `-d`                                                     | 后台运行容器                             |
-| `--name redis`                                           | 容器命名为 redis                         |
-| `-p 6379:6379`                                           | 映射 Redis 默认端口                      |
-| `-v /opt/server/redis/data:/data`                        | 挂载 Redis 数据目录                      |
-| `--restart unless-stopped`                               | 容器意外停止或系统重启时自动启动         |
-| `redis:latest`                                           | 使用 Redis 官方最新镜像                  |
-| `redis-server --bind 0.0.0.0 --requirepass "Ewecan,123"` | 容器启动命令，绑定所有地址并设置访问密码 |
+| 参数                                                   | 描述                                     |
+|------------------------------------------------------| ---------------------------------------- |
+| `-d`                                                 | 后台运行容器                             |
+| `--name redis`                                       | 容器命名为 redis                         |
+| `-p 6379:6379`                                       | 映射 Redis 默认端口                      |
+| `-v /opt/server/redis/data:/data`                    | 挂载 Redis 数据目录                      |
+| `--restart unless-stopped`                           | 容器意外停止或系统重启时自动启动         |
+| `redis:latest`                                       | 使用 Redis 官方最新镜像                  |
+| `redis-server --bind 0.0.0.0 --requirepass "123456"` | 容器启动命令，绑定所有地址并设置访问密码 |
 
 ## 4.后续配置
 

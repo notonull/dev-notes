@@ -22,6 +22,7 @@ https://id.atlassian.com/login
 https://id.atlassian.com/manage-profile/security/api-tokens
 
 **官方下载CLI地址:**
+
 https://developer.atlassian.com/cloud/acli/guides/install-acli/
 
 **Dovo Dev Agents**
@@ -34,15 +35,15 @@ https://support.atlassian.com/rovo/docs/rovo-dev-cli-quickstart-guide/
 
 ## 2.前置条件
 
-**系统版本: **windows macos linux
+**系统版本:** windows macos linux
 
-**软件依赖: **shell
+**软件依赖:** shell
 
-**权限要求: **无
+**权限要求:** 无
 
-**网络要求: **国际网代理
+**网络要求:** 国际网代理
 
-**其他注意事项: **无
+**其他注意事项:** 无
 
 ## 3.环境准备
 

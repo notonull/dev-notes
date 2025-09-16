@@ -123,18 +123,23 @@ https://id.atlassian.com/manage-profile/security/api-tokens
 
 ## 5.配置说明
 
-### 5.1.交互式命令
-
+### 5.1.登录认证
+```bash
+acli rovodev auth login
 ```
+
+### 5.2.交互式命令
+
+```bash
 acli rovodev run
 ```
 
-### 5.2.非交互式命令
+### 5.3.非交互式命令
 
-```
+```bash
 acli rovodev run <instruction>
 ```
-### 5.3.指令集 instruction
+### 5.4.指令集 instruction
 
 | 命令           | 功能说明                                                     |
 |--------------| ------------------------------------------------------------ |

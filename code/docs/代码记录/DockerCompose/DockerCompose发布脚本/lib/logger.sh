@@ -46,23 +46,23 @@ log_debug() {
 
 # 分隔线
 log_separator() {
-    echo "=========================================="
+    log_info "=========================================="
 }
 
 # 小分隔线
 log_line() {
-    echo "----------------------------------------"
+    log_info "----------------------------------------"
 }
 
 # 标题日志
 log_title() {
     log_separator
-    echo -e "${WHITE}$1${NC}"
+    echo -e "${GREEN}[INFO]${NC} $(get_timestamp) - ${WHITE}$1${NC}"
     log_separator
 }
 
 # 子标题日志
 log_subtitle() {
-    echo -e "${CYAN}$1${NC}"
+    echo -e "${GREEN}[INFO]${NC} $(get_timestamp) - ${CYAN}$1${NC}"
     log_line
 }

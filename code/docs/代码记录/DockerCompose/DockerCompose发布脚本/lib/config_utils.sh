@@ -124,18 +124,18 @@ show_config_summary() {
     local volumes_array_name="$7"
     local environment_array_name="$8"
     
-    echo "配置摘要 - $service_name:"
-    echo "  镜像: $image_name"
-    echo "  容器: $container_name"
-    echo "  路径: $install_path"
-    echo "  IP: $server_ip"
+    log_info "配置摘要 - $service_name:"
+    log_info "  镜像: $image_name"
+    log_info "  容器: $container_name"
+    log_info "  路径: $install_path"
+    log_info "  IP: $server_ip"
     
     local -n ports_ref=$ports_array_name
-    echo "  端口: ${#ports_ref[@]} 个"
+    log_info "  端口: ${#ports_ref[@]} 个"
     
     local -n volumes_ref=$volumes_array_name
-    echo "  卷: ${#volumes_ref[@]} 个"
+    log_info "  卷: ${#volumes_ref[@]} 个"
     
     local -n env_ref=$environment_array_name
-    echo "  环境变量: ${#env_ref[@]} 个"
+    log_info "  环境变量: ${#env_ref[@]} 个"
 }

@@ -52,11 +52,17 @@ check_and_pull_image() {
 # 获取容器状态
 get_container_status() {
     local container_name="$1"
-    
-    log_debug "检查容器状态: $container_name"
-    
-    if docker ps -a --format "table {{.Names}}\t{{.Status}}" | grep -q "^${container_name}"; then
-        local status=$(docker ps -a --format "{{.Status}}" --filter "name=${container_name}")
+    local docker_output=$(docker ps -a --format "table {{.Names}}\t{{.Status}}" 2>/dev/null)
+    local docker_exit_code=$?
+    if [[ $docker_exit_code -ne 0 ]]; then
+        set -e
+        echo "docker_error"
+        return 0
+    fi
+    # 直接获取容器状态，不依赖table格式的输出
+    local status=$(docker ps -a --format "{{.Status}}" --filter "name=${container_name}" 2>/dev/null)
+    if [[ -n "$status" ]]; then
+        # 容器存在，检查状态
         if [[ "$status" =~ ^Up ]]; then
             echo "running"
         elif [[ "$status" =~ ^Exited ]]; then
@@ -76,6 +82,7 @@ get_status_display() {
         "running") echo -e "${GREEN}运行中${NC}" ;;
         "stopped") echo -e "${YELLOW}已停止${NC}" ;;
         "not_installed") echo -e "${GRAY}未安装${NC}" ;;
+        "docker_error") echo -e "${RED}Docker服务异常${NC}" ;;
         *) echo -e "${RED}状态异常${NC}" ;;
     esac
 }
@@ -146,11 +153,27 @@ execute_compose() {
     
     cd "$compose_dir"
     
-    if docker compose "$action" 2>/dev/null || docker-compose "$action"; then
-        log_info "Docker Compose $action 执行成功"
-        return 0
+    # 优先使用新版 docker compose，如果失败则尝试旧版 docker-compose
+    if docker compose version &> /dev/null; then
+        log_debug "使用 docker compose 命令"
+        if docker compose $action; then
+            log_info "Docker Compose $action 执行成功"
+            return 0
+        else
+            log_error "Docker Compose $action 执行失败"
+            return 1
+        fi
+    elif docker-compose version &> /dev/null; then
+        log_debug "使用 docker-compose 命令"
+        if docker-compose $action; then
+            log_info "Docker Compose $action 执行成功"
+            return 0
+        else
+            log_error "Docker Compose $action 执行失败"
+            return 1
+        fi
     else
-        log_error "Docker Compose $action 执行失败"
+        log_error "Docker Compose 未安装或不可用"
         return 1
     fi
 }
@@ -160,9 +183,9 @@ show_container_info() {
     local container_name="$1"
     
     if is_container_running "$container_name"; then
-        echo "容器运行信息:"
+        log_info "容器运行信息:"
         docker ps --filter "name=${container_name}" --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"
     else
-        echo "容器未运行"
+        log_info "容器未运行"
     fi
 }

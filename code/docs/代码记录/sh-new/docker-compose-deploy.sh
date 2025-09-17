@@ -8,7 +8,7 @@ set -euo pipefail
 
 # 脚本目录
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-# 发布脚本目录
+# 发布目录
 DEPLOY_DIR="${SCRIPT_DIR}/deploy"
 # 工具包目录
 LIB_DIR="${SCRIPT_DIR}/lib"
@@ -17,7 +17,7 @@ LIB_DIR="${SCRIPT_DIR}/lib"
 source "${LIB_DIR}/logger.sh"
 source "${LIB_DIR}/system_utils.sh"
 
-# 注册的子脚本映射
+# 注册脚本列表
 declare -A REGISTERED_SCRIPTS
 REGISTERED_SCRIPTS["jenkins"]="deploy/jenkins.sh"
 REGISTERED_SCRIPTS["mysql"]="deploy/mysql.sh"
@@ -26,23 +26,23 @@ REGISTERED_SCRIPTS["mongodb"]="deploy/mongodb.sh"
 REGISTERED_SCRIPTS["minio"]="deploy/minio.sh"
 REGISTERED_SCRIPTS["nacos"]="deploy/nacos.sh"
 
-# 注册顺序数组 (按执行顺序排列)
-declare -a SCRIPT_ORDER=(
-    "mysql"      # 1. 先启动数据库服务
-    "redis"      # 2. 缓存服务
-    "mongodb"    # 3. 文档数据库
-    "jenkins"    # 4. CI/CD服务
-    "minio"      # 5. 对象存储
-    "nacos"      # 6. 配置中心 (依赖MySQL)
+# 安装顺序列表 - 从注册脚本列表中选择需要操作的服务
+declare -a INSTALL_ORDER=(
+    "mysql"     
+    "redis"     
+    "mongodb"   
+    "jenkins"   
+    "minio"     
+    "nacos"     
 )
 
-# 获取所有注册的脚本代码 (按注册顺序)
-get_all_codes() {
-    echo "${SCRIPT_ORDER[@]}"
+# 获取所有可用服务代码列表
+list() {
+    echo "${INSTALL_ORDER[@]}"
 }
 
-# 获取脚本绝对路径
-get_script_path() {
+# 获取指定服务代码的脚本路径
+get() {
     local code="$1"
     local registered_path="${REGISTERED_SCRIPTS[$code]}"
     
@@ -56,9 +56,9 @@ get_script_path() {
 }
 
 # 检查脚本是否存在
-check_script_exists() {
+check() {
     local code="$1"
-    local script_path="$(get_script_path "$code")"
+    local script_path="$(get "$code")"
     
     if [[ ! -f "$script_path" ]]; then
         log_error "脚本不存在: $script_path"
@@ -73,21 +73,21 @@ check_script_exists() {
 }
 
 # 执行子脚本命令
-execute_script() {
+execute() {
     local code="$1"
     local command="$2"
     
     if [[ ! -v REGISTERED_SCRIPTS[$code] ]]; then
         log_error "未注册的脚本代码: $code"
-        log_info "可用的脚本代码: $(get_all_codes)"
+        log_info "可用的脚本代码: $(list)"
         return 1
     fi
     
-    if ! check_script_exists "$code"; then
+    if ! check "$code"; then
         return 1
     fi
     
-    local script_path="$(get_script_path "$code")"
+    local script_path="$(get "$code")"
     log_info "执行 $code 的 $command 操作..."
     
     # 导出路径供子脚本使用
@@ -99,10 +99,10 @@ execute_script() {
     bash "$script_path" "$command" "${script_args[@]:2}"
 }
 
-# 执行所有脚本的命令（需要确认的操作）
-execute_all_with_confirmation() {
+# 执行所有脚本的命令（需要确认）
+execute_all() {
     local command="$1"
-    local codes=($(get_all_codes))
+    local codes=($(list))
     
     if [[ ${#codes[@]} -eq 0 ]]; then
         log_warn "没有注册的脚本"
@@ -124,7 +124,7 @@ execute_all_with_confirmation() {
     
     for code in "${codes[@]}"; do
         log_info "执行 $code 的 $command 操作..."
-        if execute_script "$code" "$command"; then
+        if execute "$code" "$command"; then
             ((success_count++))
             log_info "$code 的 $command 操作成功"
         else
@@ -136,25 +136,9 @@ execute_all_with_confirmation() {
     log_info "批量操作完成: $success_count/$total_count 成功"
 }
 
-# 执行所有脚本的命令（不需要确认的操作）
-execute_all_without_confirmation() {
-    local command="$1"
-    local codes=($(get_all_codes))
-    
-    if [[ ${#codes[@]} -eq 0 ]]; then
-        log_warn "没有注册的脚本"
-        return 0
-    fi
-    
-    for code in "${codes[@]}"; do
-        log_info "执行 $code 的 $command 操作..."
-        execute_script "$code" "$command"
-        echo "----------------------------------------"
-    done
-}
 
 # 显示帮助信息
-show_help() {
+help() {
     cat << EOF
 Docker Compose 部署脚本
 
@@ -176,7 +160,7 @@ Docker Compose 部署脚本
   help                 显示此帮助信息
 
 可用的服务代码 (按推荐执行顺序):
-$(for code in $(get_all_codes); do echo "  $code"; done)
+$(for code in $(list); do echo "  $code"; done)
 
 示例:
   $0 install jenkins    # 安装Jenkins服务
@@ -191,7 +175,7 @@ EOF
 # 主函数
 main() {
     if [[ $# -eq 0 ]]; then
-        show_help
+        help
         exit 1
     fi
     
@@ -201,7 +185,7 @@ main() {
     case "$command" in
         "list")
             log_info "注册的脚本列表:"
-            for code in $(get_all_codes); do
+            for code in $(list); do
                 echo "  $code -> ${REGISTERED_SCRIPTS[$code]}"
             done
             ;;
@@ -209,10 +193,10 @@ main() {
             if [[ -n "$code" ]]; then
                 if [[ ! -v REGISTERED_SCRIPTS[$code] ]]; then
                     log_error "未注册的脚本代码: $code"
-                    log_info "可用的脚本代码: $(get_all_codes)"
+                    log_info "可用的脚本代码: $(list)"
                     exit 1
                 fi
-                script_path="$(get_script_path "$code")"
+                script_path="$(get "$code")"
                 log_info "$code -> $script_path"
                 if [[ -f "$script_path" ]]; then
                     log_info "状态: 存在"
@@ -221,8 +205,8 @@ main() {
                 fi
             else
                 log_info "所有脚本的绝对路径:"
-                for code in $(get_all_codes); do
-                    script_path="$(get_script_path "$code")"
+                for code in $(list); do
+                    script_path="$(get "$code")"
                     status="存在"
                     if [[ ! -f "$script_path" ]]; then
                         status="不存在"
@@ -233,82 +217,86 @@ main() {
             ;;
         "config")
             if [[ -n "$code" ]]; then
-                execute_script "$code" "config" "${@:3}"
+                execute "$code" "config" "${@:3}"
             else
-                execute_all_without_confirmation "config"
+                for code in $(list); do
+                    execute "$code" "config"
+                done
             fi
             ;;
         "yml")
             if [[ -z "$code" ]]; then
                 log_error "yml 命令必须指定服务代码"
-                log_info "可用的服务代码: $(get_all_codes)"
+                log_info "可用的服务代码: $(list)"
                 exit 1
             fi
-            execute_script "$code" "yml" "${@:3}"
+            execute "$code" "yml" "${@:3}"
             ;;
         "pull")
             if [[ -n "$code" ]]; then
-                execute_script "$code" "pull" "${@:3}"
+                execute "$code" "pull" "${@:3}"
             else
-                execute_all_with_confirmation "pull"
+                execute_all "pull"
             fi
             ;;
         "install")
             if [[ -n "$code" ]]; then
-                execute_script "$code" "install" "${@:3}"
+                execute "$code" "install" "${@:3}"
             else
-                execute_all_with_confirmation "install"
+                execute_all "install"
             fi
             ;;
         "uninstall")
             if [[ -n "$code" ]]; then
-                execute_script "$code" "uninstall" "${@:3}"
+                execute "$code" "uninstall" "${@:3}"
             else
-                execute_all_with_confirmation "uninstall"
+                execute_all "uninstall"
             fi
             ;;
         "down")
             if [[ -n "$code" ]]; then
-                execute_script "$code" "down" "${@:3}"
+                execute "$code" "down" "${@:3}"
             else
-                execute_all_with_confirmation "down"
+                execute_all "down"
             fi
             ;;
         "up")
             if [[ -n "$code" ]]; then
-                execute_script "$code" "up" "${@:3}"
+                execute "$code" "up" "${@:3}"
             else
-                execute_all_with_confirmation "up"
+                execute_all "up"
             fi
             ;;
         "rmi")
             if [[ -n "$code" ]]; then
-                execute_script "$code" "rmi" "${@:3}"
+                execute "$code" "rmi" "${@:3}"
             else
-                execute_all_with_confirmation "rmi"
+                execute_all "rmi"
             fi
             ;;
         "logs")
             if [[ -z "$code" ]]; then
                 log_error "logs 命令必须指定服务代码"
-                log_info "可用的服务代码: $(get_all_codes)"
+                log_info "可用的服务代码: $(list)"
                 exit 1
             fi
-            execute_script "$code" "logs" "${@:3}"
+            execute "$code" "logs" "${@:3}"
             ;;
         "info")
             if [[ -n "$code" ]]; then
-                execute_script "$code" "info" "${@:3}"
+                execute "$code" "info" "${@:3}"
             else
-                execute_all_without_confirmation "info"
+                for code in $(list); do
+                    execute "$code" "info"
+                done
             fi
             ;;
         "help"|"-h"|"--help")
-            show_help
+            help
             ;;
         *)
             log_error "未知命令: $command"
-            show_help
+            help
             exit 1
             ;;
     esac

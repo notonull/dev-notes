@@ -5,7 +5,7 @@ import { plumeTheme } from 'vuepress-theme-plume'
 export default defineUserConfig({
   // 指定打包目录
   dest: '../docs',
-  base: '/logic-hub',
+  base: '/dev-notes',
   lang: 'zh-CN',
   locales: {
     '/': {
@@ -25,7 +25,7 @@ export default defineUserConfig({
 
   theme: plumeTheme({
     /* 添加您的部署域名, 有助于 SEO, 生成 sitemap */
-    hostname: 'https://github.com/notonull',
+    hostname: 'https://notonull.github.io',
 
     /* 文档仓库配置，用于 editLink */
     // docsRepo: '',

@@ -25,5 +25,5 @@
 
 ## 发布地址
 
-https://notonull.github.io/logic-hub/
+https://notonull.github.io/dev-notes/
 

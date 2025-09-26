@@ -9,6 +9,14 @@ createTime: 2025/09/14 18:05:32
 permalink: /blog/xn9ohyro/
 ---
 
+## 参考
+
+[官方地址](https://www.docker.com/)
+
+[官方文档地址](https://docs.docker.com/)
+
+[docker hub](https://hub.docker.com/)
+
 ## 1.镜像获取
 
 ### 1.1.查询docker hub镜像

@@ -13,7 +13,7 @@
 
 **构建生产** `npm run docs:build`
 
-**更新vuepress主题** `pm run vp-update`
+**更新vuepress主题** `npm run vp-update`
 
 ## 发布
 

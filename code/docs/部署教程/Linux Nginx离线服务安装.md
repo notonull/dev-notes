@@ -10,14 +10,11 @@ permalink: /blog/bja29csb/
 
 ## 1.参考
 
-**官方地址:**
-http://nginx.org
+[官方地址](http://nginx.org)
 
-**官方下载地址:**
-http://nginx.org/en/download.html
+[官方下载地址](http://nginx.org/en/download.html)
 
-**官方文档**
-http://nginx.org/en/docs/
+[官方文档](http://nginx.org/en/docs/)
 
 ## 2.环境准备
 

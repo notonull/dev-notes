@@ -10,14 +10,11 @@ permalink: /blog/537niq7b/
 
 ## 1.参考
 
-**官方地址:**
-http://test.com
+[官方地址](http://test.com)
 
-**官方下载地址:**
-http://test.com/en/download.html
+[官方下载地址](http://test.com/en/download.html)
 
-**官方文档**
-http://test.com/
+[官方文档](http://test.com/)
 
 ## 2.安装服务
 

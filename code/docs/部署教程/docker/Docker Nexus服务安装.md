@@ -1,5 +1,5 @@
 ---
-title: 【Linux】【Docker】【Nexus】Nexus服务安装
+title: Docker Nexus服务安装
 copyright: CC-BY-4.0
 tags:
   - linux

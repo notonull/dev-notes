@@ -1,5 +1,5 @@
 ---
-title: 【Linux】【Docker】【Redis】Redis服务安装
+title: Docker Redis服务安装
 copyright: CC-BY-4.0
 tags:
   - linux

@@ -1,5 +1,5 @@
 ---
-title: 【Linux】【Docker】【Jenkins】Jenkins服务安装
+title: Docker Jenkins服务安装
 copyright: CC-BY-4.0
 tags:
   - linux

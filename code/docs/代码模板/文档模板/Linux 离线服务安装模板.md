@@ -10,14 +10,11 @@ permalink: /blog/rp10nc8j/
 
 ## 1.参考
 
-**官方地址:**
-http://test.com
+[官方地址](http://test.com)
 
-**官方下载地址:**
-http://test.com/en/download.html
+[官方下载地址](http://test.com/en/download.html)
 
-**官方文档**
-http://test.com/
+[官方文档](http://test.com/)
 
 ## 2.环境准备
 

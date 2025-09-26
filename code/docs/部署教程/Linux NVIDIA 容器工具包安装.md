@@ -10,9 +10,7 @@ permalink: /blog/1fj6c2ck/
 ---
 
 ## 1.参考
-
-**官方文档**
-https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html#installation
+[官方文档](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html#installation)
 
 ## 2.安装服务
 

@@ -1,5 +1,5 @@
 ---
-title: 【Linux】【Docker】【Nacos】Nacos服务安装
+title: Docker Nacos服务安装
 copyright: CC-BY-4.0
 tags:
   - linux

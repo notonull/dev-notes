@@ -10,17 +10,13 @@ permalink: /blog/5sjwkr56/
 
 ## 1.参考
 
-**官方地址:**
-https://ubuntu.com/
+[官方地址](https://ubuntu.com/)
 
-**官方服务器版本下载地址:**
-https://ubuntu.com/download/server
+[官方服务器版本下载地址](https://ubuntu.com/download/server)
 
-**官方版本下载地址:**
-https://ubuntu.com/download/desktop
+[官方版本下载地址](https://ubuntu.com/download/desktop)
 
-**制作启动盘轻量化工具:**
-https://rufus.ie/zh/
+[制作启动盘轻量化工具](https://rufus.ie/zh/)
 
 ## 2.环境准备
 
@@ -28,13 +24,13 @@ https://rufus.ie/zh/
 
 选择版本自行下载
 
-https://ubuntu.com/download/server
+[https://ubuntu.com/download/server](https://ubuntu.com/download/server)
 
 ### 2.2.制作启动盘
 
 轻量化工具快捷制作
 
-https://rufus.ie/zh/
+[https://rufus.ie/zh/](https://rufus.ie/zh/)
 
 ## 3.安装服务
 
@@ -100,7 +96,7 @@ https://rufus.ie/zh/
 
 #### 3.2.8.镜像源配置
 
-**阿里云** http://mirrors.aliyun.com/ubuntu
+**阿里云** `http://mirrors.aliyun.com/ubuntu`
 
 ![image-20250914190239791](./../.vuepress/images/image-20250914190239791.png)
 

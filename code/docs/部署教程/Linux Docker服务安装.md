@@ -13,14 +13,11 @@ permalink: /blog/mpqs2g9m/
 
 ## 1.参考
 
-**官方地址:**
-http://test.com
+[官方地址](https://www.docker.com/)
 
-**官方下载地址:**
-http://test.com/en/download.html
+[官方文档地址](https://docs.docker.com/)
 
-**官方文档**
-http://test.com/
+[docker hub](https://hub.docker.com/)
 
 ## 2.安装服务
 

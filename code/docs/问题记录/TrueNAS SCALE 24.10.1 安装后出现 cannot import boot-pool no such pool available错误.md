@@ -21,11 +21,11 @@ permalink: /blog/zjf0rp91/
 
 ### 2.1.TrueNAS论坛
 
-https://ixsystems.atlassian.net/browse/NAS-131890
+[https://ixsystems.atlassian.net/browse/NAS-131890](https://ixsystems.atlassian.net/browse/NAS-131890)
 
 ### 2.2.Reddit TrueNAS 社区
 
-https://www.reddit.com/r/truenas/comments/1b13tf9/scale_clean_install_bootpool_not_found/
+[https://www.reddit.com/r/truenas/comments/1b13tf9/scale_clean_install_bootpool_not_found/](https://www.reddit.com/r/truenas/comments/1b13tf9/scale_clean_install_bootpool_not_found/)
 
 ## 3.场景还原
 

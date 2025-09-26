@@ -10,28 +10,22 @@ permalink: /blog/65gu1enw/
 
 ## 1.参考
 
-**官方地址:**
-https://atlassian.com
 
-**账号注册地址:**
+[官方地址](https://atlassian.com)
 
-https://id.atlassian.com/login
 
-**API 令牌地址**
+[账号注册地址](https://id.atlassian.com/login)
 
-https://id.atlassian.com/manage-profile/security/api-tokens
 
-**官方下载CLI地址:**
+[API 令牌地址](https://id.atlassian.com/manage-profile/security/api-tokens)
 
-https://developer.atlassian.com/cloud/acli/guides/install-acli/
 
-**Dovo Dev Agents**
+[官方下载CLI地址](https://developer.atlassian.com/cloud/acli/guides/install-acli/)
 
-https://www.atlassian.com/try/cloud/signup?bundle=devai
+[Dovo Dev Agents](https://www.atlassian.com/try/cloud/signup?bundle=devai)
 
-**Rovo Dev CLI 文档**
 
-https://support.atlassian.com/rovo/docs/rovo-dev-cli-quickstart-guide/
+[Rovo Dev CLI 文档](https://support.atlassian.com/rovo/docs/rovo-dev-cli-quickstart-guide/)
 
 ## 2.前置条件
 
@@ -49,9 +43,7 @@ https://support.atlassian.com/rovo/docs/rovo-dev-cli-quickstart-guide/
 
 ### 3.1.注册账号
 
-**账号注册地址:**
-
-https://id.atlassian.com/login
+[账号注册地址](https://id.atlassian.com/login)
 
 ![image-20250916000135095](./../.vuepress/images/image-20250916000135095.png)
 
@@ -71,9 +63,7 @@ https://id.atlassian.com/login
 
 ### 3.2.创建API令牌
 
-**API 令牌地址**
-
-https://id.atlassian.com/manage-profile/security/api-tokens
+[API 令牌地址](https://id.atlassian.com/manage-profile/security/api-tokens)
 
 ![image-20250916002844259](./../.vuepress/images/image-20250916002844259.png)
 
@@ -97,21 +87,15 @@ https://id.atlassian.com/manage-profile/security/api-tokens
 
 ### 4.1.选择系统环境
 
-**MacOS**
-
-**Windows**
-
-**Linux**
-
 ![image-20250915235629180](./../.vuepress/images/image-20250915235629180.png)
 
 ### 4.2.Windows环境安装
 
 根据windows 架构选择下载连接，截取url部分在浏览器执行下载
 
-**x86-64**  https://acli.atlassian.com/windows/latest/acli_windows_amd64/acli.exe
+[x86-64](https://acli.atlassian.com/windows/latest/acli_windows_amd64/acli.exe)
 
-**ARM64** https://acli.atlassian.com/windows/latest/acli_windows_arm64/acli.exe
+[ARM64](https://acli.atlassian.com/windows/latest/acli_windows_arm64/acli.exe)
 
 ![image-20250916005211608](./../.vuepress/images/image-20250916005211608.png)
 
@@ -143,24 +127,24 @@ acli rovodev run <instruction>
 
 | 命令           | 功能说明                                                     |
 |--------------| ------------------------------------------------------------ |
-| /models      | 查看并选择可用的模型。                                       |
-| /sessions    | 查看和管理代理会话。                                         |
-| /clear       | 清空当前会话的消息历史。                                     |
-| /prune       | 在保留上下文的同时减少当前会话消息历史的令牌大小。           |
-| /instructions | 执行已保存的指令。                                           |
-| /memory      | 管理内存文件。                                               |
+| `/models`    | 查看并选择可用的模型。                                       |
+| `/sessions`  | 查看和管理代理会话。                                         |
+| `/clear`     | 清空当前会话的消息历史。                                     |
+| `/prune`     | 在保留上下文的同时减少当前会话消息历史的令牌大小。           |
+| `/instructions` | 执行已保存的指令。                                           |
+| `/memory`    | 管理内存文件。                                               |
 | `# <note>`     | 向 Rovo Dev 的本地内存文件添加笔记。                         |
 |`#! <note>`    | 从 Rovo Dev 的本地内存文件删除笔记。                         |
-| /feedback    | 提供反馈或报告 Rovo Dev CLI 的错误。                         |
-| /yolo        | 切换 YOLO 模式，开启后所有文件增删改查操作和 bash 命令无需确认。请谨慎使用！ |
-| /copy        | 复制代理的最后一次响应到剪贴板。                             |
-| /jira        | 配置 Jira 项目连接（使用 `/jira global` 或 `/jira local`）。 |
-| /mcp         | 管理 MCP 服务器。                                            |
-| /directories | 管理允许访问的外部目录。                                     |
-| /status      | 显示 Rovo Dev CLI 状态，包括版本、账号信息和模型。           |
-| /exit        | 退出应用，也可使用 `/quit`、`/q`、`exit`、`quit` 或 `q`。    |
-| /usage       | 显示每日 LLM 令牌使用情况。                                  |
-| /help        | 显示帮助信息和可用命令。或输入 `/<command> help` 查看子命令。 |
+| `/feedback`  | 提供反馈或报告 Rovo Dev CLI 的错误。                         |
+| `/yolo`      | 切换 YOLO 模式，开启后所有文件增删改查操作和 bash 命令无需确认。请谨慎使用！ |
+| `/copy`      | 复制代理的最后一次响应到剪贴板。                             |
+| `/jira`      | 配置 Jira 项目连接（使用 `/jira global` 或 `/jira local`）。 |
+| `/mcp`       | 管理 MCP 服务器。                                            |
+| `/directories` | 管理允许访问的外部目录。                                     |
+| `/status`    | 显示 Rovo Dev CLI 状态，包括版本、账号信息和模型。           |
+| `/exit`      | 退出应用，也可使用 `/quit`、`/q`、`exit`、`quit` 或 `q`。    |
+| `/usage`     | 显示每日 LLM 令牌使用情况。                                  |
+| `/help`      | 显示帮助信息和可用命令。或输入 `/<command> help` 查看子命令。 |
 
 ## 6.常用操作
 
@@ -198,9 +182,7 @@ acli rovodev auth login
 
 **点击跳转注册**
 
-**Dovo Dev Agents**
-
-https://www.atlassian.com/try/cloud/signup?bundle=devai
+[Dovo Dev Agents](https://www.atlassian.com/try/cloud/signup?bundle=devai)
 
 **登录站点**
 

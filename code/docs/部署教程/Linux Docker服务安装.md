@@ -1,5 +1,5 @@
 ---
-title: 【Linux】【Docker】Docker服务安装
+title: Linux Docker服务安装
 copyright: CC-BY-4.0
 tags:
   - linux

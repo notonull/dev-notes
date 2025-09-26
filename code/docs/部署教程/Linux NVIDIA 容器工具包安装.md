@@ -1,5 +1,5 @@
 ---
-title: Linux Docker服务安装
+title: Linux NVIDIA 容器工具包安装
 copyright: CC-BY-4.0
 tags:
   - linux

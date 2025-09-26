@@ -1,5 +1,5 @@
 ---
-title: 【Linux】【Nginx】Nginx服务安装
+title: Linux Nginx离线服务安装
 copyright: CC-BY-4.0
 tags:
   - linux

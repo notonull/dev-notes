@@ -30,13 +30,13 @@ permalink: /blog/goyh85gw/
 
 ### 3.1.linux
 
-[docker 安装](../部署教程/Linux Docker服务安装.md)
+[docker安装](../部署教程/Linux Docker服务安装.md)
 
 ## 4.安装部署
 
 ### 4.1.linux
 
-[docker 安装jenkins服务](../部署教程/docker/Docker Jenkins服务安装.md)
+[docker安装jenkins服务](../部署教程/docker/Docker Jenkins服务安装.md)
 
 ## 5.配置说明
 

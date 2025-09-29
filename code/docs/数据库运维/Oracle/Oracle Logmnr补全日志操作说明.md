@@ -51,6 +51,17 @@ SELECT LOG_MODE FROM V$DATABASE;
 | ---------- |
 | ARCHIVELOG |
 
+**开启归档日志模式**
+
+```sql
+sqlplus / as sysdba;
+-- 先关闭数据库
+SHUTDOWN IMMEDIATE;
+STARTUP MOUNT;
+ALTER DATABASE ARCHIVELOG;
+ALTER DATABASE OPEN;
+```
+
 #### 5.1.2.启用数据库级别补充日志
 
 **描述**：开启数据库级别的补充日志，为 LogMiner 做准备。
@@ -80,6 +91,17 @@ ALTER TABLE "模式"."表名" ADD SUPPLEMENTAL LOG DATA (ALL) COLUMNS;
 * `"模式"`：表所属 schema
 * `"表名"`：需要补充日志的表
 
+#### 5.1.4.查询表空间文件、归档文件、补全日志文件
+
+```sql
+## 归档日志文件记录
+select * FROM v$archived_log;
+## 补全日志文件记录
+SELECT * FROM v$logfile;
+## 表空间文件记录
+SELECT * FROM dba_data_files;
+```
+
 ### 5.2.创建CDC用户
 
 ```sql
@@ -107,45 +129,47 @@ CREATE USER cdc_user IDENTIFIED BY 密码
   QUOTA UNLIMITED ON CDC_TBS;
 
 -- ===========================================
--- 3️⃣ 基本连接权限
+-- 1️⃣ 基础连接和会话控制
 -- ===========================================
-GRANT CREATE SESSION TO cdc_user;  -- 登录数据库
-GRANT SET CONTAINER TO cdc_user;   -- 如果是 CDB，可切换 PDB
+
+GRANT CREATE SESSION TO CDC_USER;   -- 允许登录数据库
+GRANT SET CONTAINER TO CDC_USER;    -- 在 CDB/PDB 多租户环境中切换容器
 
 -- ===========================================
--- 4️⃣ 用户自身 schema 权限（建表/序列/过程/视图）
+-- 2️⃣ 元数据 / 数据字典访问
 -- ===========================================
-GRANT CREATE TABLE TO cdc_user;
-GRANT CREATE SEQUENCE TO cdc_user;
-GRANT CREATE PROCEDURE TO cdc_user;
-GRANT CREATE VIEW TO cdc_user;
-GRANT RESOURCE TO cdc_user;        -- schema 内对象管理权限
+
+GRANT SELECT ON V_$DATABASE TO CDC_USER;      -- 查询数据库信息
+GRANT SELECT ANY TABLE TO CDC_USER;           -- 查询任意用户的表
+GRANT SELECT_CATALOG_ROLE TO CDC_USER;        -- 访问数据字典视图
+GRANT EXECUTE_CATALOG_ROLE TO CDC_USER;       -- 执行数据字典里的 PL/SQL 包
+GRANT SELECT ANY TRANSACTION TO CDC_USER;     -- 查询任意事务信息
+GRANT ANALYZE ANY TO CDC_USER;                -- 分析任意对象（收集统计信息）
 
 -- ===========================================
--- 5️⃣ LogMiner 必需权限
+-- 3️⃣ LogMiner / 归档日志相关权限
 -- ===========================================
-GRANT LOGMINING TO cdc_user;                -- 使用 LogMiner
-GRANT SELECT ANY TRANSACTION TO cdc_user;   -- 查询 redo log 事务
-GRANT EXECUTE ON DBMS_LOGMNR TO cdc_user;   -- LogMiner 包
-GRANT EXECUTE ON DBMS_LOGMNR_D TO cdc_user; -- LogMiner 辅助包
+
+GRANT LOGMINING TO CDC_USER;                        -- 使用 LogMiner
+GRANT EXECUTE ON DBMS_LOGMNR TO CDC_USER;           -- 执行 LogMiner 包
+GRANT EXECUTE ON DBMS_LOGMNR_D TO CDC_USER;         -- 执行 LogMiner 辅助包
+GRANT SELECT ON V_$LOG TO CDC_USER;                 -- 读取联机日志视图
+GRANT SELECT ON V_$LOG_HISTORY TO CDC_USER;         -- 读取日志历史
+GRANT SELECT ON V_$LOGMNR_LOGS TO CDC_USER;         -- LogMiner 使用的日志列表
+GRANT SELECT ON V_$LOGMNR_CONTENTS TO CDC_USER;     -- LogMiner 解出的日志内容
+GRANT SELECT ON V_$LOGMNR_PARAMETERS TO CDC_USER;   -- LogMiner 参数
+GRANT SELECT ON V_$LOGFILE TO CDC_USER;             -- 日志文件信息
+GRANT SELECT ON V_$ARCHIVED_LOG TO CDC_USER;        -- 归档日志信息
+GRANT SELECT ON V_$ARCHIVE_DEST_STATUS TO CDC_USER; -- 归档目标状态
 
 -- ===========================================
--- 6️⃣ 系统视图访问权限（redo / archive 日志）
+-- 4️⃣ DDL / DML 操作能力（可选，主要用于快照/DDL 同步）
 -- ===========================================
-GRANT SELECT ON V_$DATABASE TO cdc_user;
-GRANT SELECT ON V_$LOG TO cdc_user;
-GRANT SELECT ON V_$LOGFILE TO cdc_user;
-GRANT SELECT ON V_$LOG_HISTORY TO cdc_user;
-GRANT SELECT ON V_$ARCHIVED_LOG TO cdc_user;
-GRANT SELECT ON V_$ARCHIVE_DEST_STATUS TO cdc_user;
-GRANT SELECT ON V_$LOGMNR_LOGS TO cdc_user;
-GRANT SELECT ON V_$LOGMNR_CONTENTS TO cdc_user;
-GRANT SELECT ON V_$LOGMNR_PARAMETERS TO cdc_user;
 
--- ===========================================
--- 7️⃣ 可选：指定业务表只读权限（按需添加）
--- ===========================================
--- GRANT SELECT ON schema_name.table_name TO cdc_user;
+GRANT CREATE TABLE TO CDC_USER;     -- 创建表
+GRANT LOCK ANY TABLE TO CDC_USER;   -- 锁任意表
+GRANT ALTER ANY TABLE TO CDC_USER;  -- 修改任意表
+GRANT CREATE SEQUENCE TO CDC_USER;  -- 创建序列
 
 ```
 

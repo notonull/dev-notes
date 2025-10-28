@@ -122,39 +122,39 @@ permalink: /blog/goyh85gw/
 
 **安装插件**
 
-![image-20250927045657267](./../../../../logic-hub/code/docs/.vuepress/images/image-20250927045657267.png)
+![image-20250927045657267](./../.vuepress/images/image-20250927045657267.png)
 
 **新增配置**
 
-![image-20250927045711559](./../../../../logic-hub/code/docs/.vuepress/images/image-20250927045711559.png)
+![image-20250927045711559](./../.vuepress/images/image-20250927045711559.png)
 
-![image-20250927045725833](./../../../../logic-hub/code/docs/.vuepress/images/image-20250927045725833.png)
+![image-20250927045725833](./../.vuepress/images/image-20250927045725833.png)
 
-![image-20250927045846397](./../../../../logic-hub/code/docs/.vuepress/images/image-20250927045846397.png)
+![image-20250927045846397](./../.vuepress/images/image-20250927045846397.png)
 
-![image-20250927045740452](./../../../../logic-hub/code/docs/.vuepress/images/image-20250927045740452.png)
+![image-20250927045740452](./../.vuepress/images/image-20250927045740452.png)
 
 **全局使用maven配置**
 
-![image-20250927050153513](./../../../../logic-hub/code/docs/.vuepress/images/image-20250927050153513.png)
+![image-20250927050153513](./../.vuepress/images/image-20250927050153513.png)
 
 **局部使用maven配置**
 
-![image-20250927050213021](./../../../../logic-hub/code/docs/.vuepress/images/image-20250927050213021.png)
+![image-20250927050213021](./../.vuepress/images/image-20250927050213021.png)
 
-![image-20250927050253276](./../../../../logic-hub/code/docs/.vuepress/images/image-20250927050253276.png)
+![image-20250927050253276](./../.vuepress/images/image-20250927050253276.png)
 
-![image-20250927050309930](./../../../../logic-hub/code/docs/.vuepress/images/image-20250927050309930.png)
+![image-20250927050309930](./../.vuepress/images/image-20250927050309930.png)
 
 ### 6.2.安装配置 Maven
 
 **全局配置**
 
-![image-20250927050647390](./../../../../logic-hub/code/docs/.vuepress/images/image-20250927050647390.png)
+![image-20250927050647390](./../.vuepress/images/image-20250927050647390.png)
 
 **Maven安装**
 
-![image-20250927050705609](./../../../../logic-hub/code/docs/.vuepress/images/image-20250927050705609.png)
+![image-20250927050705609](./../.vuepress/images/image-20250927050705609.png)
 
 **自动安装**
 
@@ -162,27 +162,27 @@ install automatically 在使用这maven时会自动下载
 
 安装位置：`./tools/hudson.tasks.Maven_MavenInstallation`
 
-![image-20250927050716359](./../../../../logic-hub/code/docs/.vuepress/images/image-20250927050716359.png)
+![image-20250927050716359](./../.vuepress/images/image-20250927050716359.png)
 
 ### 6.3.安装配置 Publish Over SSH
 
 **安装插件**
 
-![image-20250927051247082](./../../../../logic-hub/code/docs/.vuepress/images/image-20250927051247082.png)
+![image-20250927051247082](./../.vuepress/images/image-20250927051247082.png)
 
 **配置SSH Servers**
 
-![image-20250927051300948](./../../../../logic-hub/code/docs/.vuepress/images/image-20250927051300948.png)
+![image-20250927051300948](./../.vuepress/images/image-20250927051300948.png)
 
-![image-20250927051318526](./../../../../logic-hub/code/docs/.vuepress/images/image-20250927051318526.png)
+![image-20250927051318526](./../.vuepress/images/image-20250927051318526.png)
 
 **配置密码和发布目录**
 
-![image-20250927051352318](./../../../../logic-hub/code/docs/.vuepress/images/image-20250927051352318.png)
+![image-20250927051352318](./../.vuepress/images/image-20250927051352318.png)
 
 **job配置发布**
 
-![image-20250927051037235](./../../../../logic-hub/code/docs/.vuepress/images/image-20250927051037235.png)
+![image-20250927051037235](./../.vuepress/images/image-20250927051037235.png)
 
 `SourceFiles`工作区代发布文件
 
@@ -192,7 +192,7 @@ install automatically 在使用这maven时会自动下载
 
 `Exec command`自定义执行命令
 
-![image-20250927051629869](./../../../../logic-hub/code/docs/.vuepress/images/image-20250927051629869.png)
+![image-20250927051629869](./../.vuepress/images/image-20250927051629869.png)
 
 ## 7.排错与日志
 

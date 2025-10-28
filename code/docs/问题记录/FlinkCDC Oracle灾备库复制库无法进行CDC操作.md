@@ -5,6 +5,8 @@ tags:
   - flink
   - flinkCDC
   - oracle
+createTime: 2025/10/28 22:23:29
+permalink: /blog/7ueavpch/
 ---
 
 ## 1.问题描述
